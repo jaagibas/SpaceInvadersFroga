@@ -17,6 +17,7 @@ import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Player;
 //Simulacion2º de cambios sobre rama dev (visualizando TopScore)
 //Simulacion3º de cambios sobre rama dev (visualizando CteSpeed)
 //Simulacion4º y nota:: Cambiar mensaje Zorionak Niveles y Final
+//Simulacion5º rama dev sigue su curso
 
 public class Game  {
 	
