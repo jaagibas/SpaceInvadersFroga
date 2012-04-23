@@ -183,6 +183,8 @@ public class GameLogic {
 		return actors;
 	}
 	
-	
+	public void addLevel( Level level){
+        levels.add(level);
+    }
 
 }
