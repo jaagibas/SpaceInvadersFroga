@@ -26,6 +26,7 @@ public class Game  {
 	private GameLogic gameLogic;
 	private HashMap<String,BufferedImage> sprites;
 	
+	boolean running;
 	
 	
 	
