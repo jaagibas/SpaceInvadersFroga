@@ -172,6 +172,11 @@ public class Game  {
 		
 	}
 	
-
+	public boolean isGameRunning() {
+		boolean ret = true;
+		GameLogic gameLogic = getGameLogic();
+		ret = ( !gameLogic.isGameOver() && !gameLogic.isGameWin()  );
+		return ret;		
+	}
 
 }	
