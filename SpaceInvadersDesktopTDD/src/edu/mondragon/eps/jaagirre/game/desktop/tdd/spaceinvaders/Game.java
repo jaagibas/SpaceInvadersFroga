@@ -14,6 +14,7 @@ import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Player;
 
 //Simulación de cambios sobre rama dev
+//Simulacion2º de cambios sobre rama dev (visualizando TopScore)
 
 public class Game  {
 	
