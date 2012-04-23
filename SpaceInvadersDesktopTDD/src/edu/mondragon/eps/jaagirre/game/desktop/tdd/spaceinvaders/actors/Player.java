@@ -8,7 +8,20 @@ public class Player extends Actor{
 	ArrayList<Shot> misiles;
 	int misilNumber;
 	int shields;
+	int v;
 	
+	public int getV() {
+		return v;
+	}
+
+
+
+	public void setV(int v) {
+		this.v = v;
+	}
+
+
+
 	public Player(BufferedImage image, int x, int y, int xLimit, int yLimit) {
 		super(image, x, y, xLimit, yLimit);
 		// TODO Auto-generated constructor stub
@@ -62,20 +75,20 @@ public class Player extends Actor{
 	}
 	
 	public void moveRight(){
-		this.setX( this.getX() +  2);
+		this.setX( this.getX() +  v);
 		
 	}
 	
 	public void moveLeft(){
-		this.setX( this.getX() -  2);
+		this.setX( this.getX() -  v);
 	}
 	
 	public void moveUp(){
-		this.setY( this.getY() -  2);
+		this.setY( this.getY() -  v);
 	}
 
 	public void moveDown(){
-		this.setY( this.getY() +  2);
+		this.setY( this.getY() +  v);
 	}
 	
 	public void fire(){
