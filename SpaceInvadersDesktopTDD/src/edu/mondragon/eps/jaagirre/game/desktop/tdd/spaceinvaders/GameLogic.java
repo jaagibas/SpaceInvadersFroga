@@ -22,6 +22,7 @@ public class GameLogic {
 		this.actors = new ArrayList<Actor>();
 		this.gameWin = false;
 		this.gameOver = false;
+		this.actualLevel = 0;
 	}
 	
 	public void setBoard(GameBoard board) {
