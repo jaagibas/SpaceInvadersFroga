@@ -186,5 +186,13 @@ public class GameLogic {
 	public void addLevel( Level level){
         levels.add(level);
     }
+	
+	public void executeActualLevel(){
+        update();
+        board.paint( board.getGraphics());
+        try{
+        	Thread.sleep(100);
+        }catch(Exception e){}
+  }
 
 }
