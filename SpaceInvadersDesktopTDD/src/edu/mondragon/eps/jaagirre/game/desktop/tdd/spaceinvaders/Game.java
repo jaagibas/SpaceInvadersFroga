@@ -163,7 +163,14 @@ public class Game  {
 		return gameLogic;
 	}
 
-
+	public void step(){
+		update();
+        board.paint( board.getGraphics());
+        try{
+        	Thread.sleep(100);
+        }catch(Exception e){}
+		
+	}
 	
 
 
