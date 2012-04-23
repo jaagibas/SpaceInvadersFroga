@@ -26,6 +26,7 @@ public class GameLogic {
 		this.gameWin = false;
 		this.gameOver = false;
 		this.actualLevel = 0;
+		this.levels = new ArrayList<Level>();
 	}
 	
 	public void setBoard(GameBoard board) {
@@ -188,11 +189,33 @@ public class GameLogic {
     }
 	
 	public void executeActualLevel(){
-        update();
+		//Establecemos la pantalla actual
+        actors = levels.get( this.actualLevel).getLevel();
+		update();
         board.paint( board.getGraphics());
         try{
         	Thread.sleep(100);
         }catch(Exception e){}
-  }
+	}
 
+	public void setActorsInBoard(){
+        board.imageBuffer.addAll(levels.get( this.actualLevel).getLevel());
+	}
+
+
+	public void nextLevel(){
+        if (this.actualLevel  < levels.size() ){
+               this.actualLevel++;
+        }
+    }
+       
+    public boolean isGameWon(){
+        boolean ret = false;
+        if ( this.actualLevel  == levels.size()){
+               ret = true;
+        }
+        return ret;
+    }
+	
+	
 }

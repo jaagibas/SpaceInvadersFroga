@@ -1,9 +1,11 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Alien;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.AlienHV;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Player;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Shot;
 
@@ -22,6 +24,7 @@ public class SpaceInvadersMain {
 		GameThread gameThread= null;
 		GameEventListener listener;
 		Actor []aliens;
+		Actor []aliens2;
 		Player player = null;
 	
 		pantalla = new GameBoard();
@@ -34,6 +37,7 @@ public class SpaceInvadersMain {
 		game.addSprite("invasor" , "bicho.gif");
 		game.addSprite("jugador" ,"nave.gif");
 		game.addSprite("misil" ,"disparo1.gif");
+		game.addSprite("invasorHV" ,"the_new_blue_space_ship.gif");
 		
 		game.getWindow().addWindowListener(listener);
 		game.getWindow().addKeyListener(listener);
@@ -44,8 +48,37 @@ public class SpaceInvadersMain {
 			aliens[i] = new Alien( game.getSprite("invasor") ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  ); 
 			aliens[i].setVx(2);
 			aliens[i].setVy(0);
-			game.addActor(aliens[i]);
+			//game.addActor(aliens[i]);
 		}
+		
+		Level level = new Level();
+        ArrayList<Actor> actors = new ArrayList<Actor>(Arrays.asList(aliens));
+        level.setLevel(actors);
+        game.getGameLogic().addLevel(level);
+        game.getGameLogic().setActorsInBoard();
+        
+        aliens2 = new Actor[6];
+        for ( i = 0 ; i < 3 ; i++){
+              
+               aliens2[i] = new Alien( game.getSprite("invasor") ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  );
+               aliens2[i].setVx(2);
+               aliens2[i].setVy(0);
+               //game.addActor(aliens[i]);
+        }
+        for ( i = 3 ; i < 6 ; i++){
+              
+               aliens2[i] = new AlienHV( game.getSprite("invasorHV") ,  10*i ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  );
+               aliens2[i].setVx(2);
+               aliens2[i].setVy(0);
+               //game.addActor(aliens2[i]);
+        }
+        
+        //Segundo nivel
+        Level level2 = new Level();
+        ArrayList<Actor> actors2 = new ArrayList<Actor>(Arrays.asList(aliens2));
+        level2.setLevel(actors2);
+        game.getGameLogic().addLevel(level2);
+		
 		
 		player = new Player( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
 		ArrayList<Shot> misiles = new ArrayList<Shot>();
