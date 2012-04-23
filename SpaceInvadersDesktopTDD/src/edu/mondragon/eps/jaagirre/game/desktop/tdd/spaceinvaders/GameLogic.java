@@ -16,6 +16,9 @@ public class GameLogic {
 	
 	private ArrayList<Level> levels;
     int actualLevel;
+    public static final int DEAD = 0;
+    public static final int PLAYIN = 1;
+    public static final int LEVEL_DONE = 2;
 	
 	public GameLogic() {
 		super();
