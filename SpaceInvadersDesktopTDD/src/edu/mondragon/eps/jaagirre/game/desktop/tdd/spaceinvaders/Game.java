@@ -164,14 +164,10 @@ public class Game  {
 		return gameLogic;
 	}
 
-	public void step(){
-		update();
-        board.paint( board.getGraphics());
-        try{
-        	Thread.sleep(100);
-        }catch(Exception e){}
-		
-	}
+	/*Funcion que realiza la actualización de actores, verifica el juego y pinta la pantalla*/
+    public void step(){
+          gameLogic.executeActualLevel();
+    }
 	
 	public boolean isGameRunning() {
 		boolean ret = true;
