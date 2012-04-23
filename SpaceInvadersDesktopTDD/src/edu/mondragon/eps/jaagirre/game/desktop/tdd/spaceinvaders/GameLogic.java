@@ -14,6 +14,8 @@ public class GameLogic {
 	private boolean gameWin;
 	private boolean gameOver;
 	
+	private ArrayList<Level> levels;
+	
 	public GameLogic() {
 		super();
 		this.actors = new ArrayList<Actor>();
