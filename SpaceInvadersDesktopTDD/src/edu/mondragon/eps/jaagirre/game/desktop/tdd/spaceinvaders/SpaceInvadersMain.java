@@ -7,6 +7,7 @@ import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Alien;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.AlienHV;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Player;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.PlayerWithCteSpeed;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Shot;
 
 
@@ -25,8 +26,9 @@ public class SpaceInvadersMain {
 		GameEventListener listener;
 		Actor []aliens;
 		Actor []aliens2;
-		Player player = null;
-	
+		//Player player = null;
+		PlayerWithCteSpeed player = null;
+		
 		pantalla = new GameBoard();
 		game = new Game( 400, 400, pantalla);
 		gameThread= new GameThread(game);
@@ -80,8 +82,10 @@ public class SpaceInvadersMain {
         game.getGameLogic().addLevel(level2);
 		
 		
-		player = new Player( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
-		ArrayList<Shot> misiles = new ArrayList<Shot>();
+		//player = new Player( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
+        player = new PlayerWithCteSpeed( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
+		player.setV(2);
+        ArrayList<Shot> misiles = new ArrayList<Shot>();
 		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
 		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
 		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
