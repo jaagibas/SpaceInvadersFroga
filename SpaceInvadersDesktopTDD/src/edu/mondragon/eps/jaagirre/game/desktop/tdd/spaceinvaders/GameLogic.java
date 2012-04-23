@@ -15,6 +15,7 @@ public class GameLogic {
 	private boolean gameOver;
 	
 	private ArrayList<Level> levels;
+    int actualLevel;
 	
 	public GameLogic() {
 		super();
