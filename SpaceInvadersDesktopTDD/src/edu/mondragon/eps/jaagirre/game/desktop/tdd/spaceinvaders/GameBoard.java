@@ -62,7 +62,7 @@ public class GameBoard extends Canvas {
 		for (i = 0 ; i < imageBuffer.size() ; i++){
 			actor = (Actor)imageBuffer.get(i);
 			if (actor.isVisible()){
-				g.drawImage( actor.getImage() ,  actor.getX() , actor.getY(), null  );
+				g.drawImage(  getSprite( actor.getId() ),    actor.getX() , actor.getY(), null  );
 			}
 			
 		}
