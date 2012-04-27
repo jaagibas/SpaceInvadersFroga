@@ -3,7 +3,9 @@ package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 
@@ -12,6 +14,7 @@ public class GameBoard extends Canvas {
 	ArrayList<GameText> textBuffer;
 	ArrayList<Actor> imageBuffer;
 	//backgroundBuffer
+	private HashMap<String,BufferedImage> sprites;
 	
 	public GameBoard() {
 		super();
