@@ -86,6 +86,11 @@ public class GameBoard extends Canvas {
 	    paintText(g);
 	    paintImage(g);
 	}
+	
+	
+	public BufferedImage getSprite(String id){
+		return null;
+	}
 
 }
 
