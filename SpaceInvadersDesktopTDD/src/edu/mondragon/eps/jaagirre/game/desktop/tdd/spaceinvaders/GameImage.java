@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class GameImage {
 	private BufferedImage image;
+	String id;
 	private int x , y;
 	private int xLimit , yLimit;
 	private int width;
@@ -139,6 +140,16 @@ public class GameImage {
 	public void setyLimit(int yLimit) {
 		this.yLimit = yLimit;
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	
 	
 	
