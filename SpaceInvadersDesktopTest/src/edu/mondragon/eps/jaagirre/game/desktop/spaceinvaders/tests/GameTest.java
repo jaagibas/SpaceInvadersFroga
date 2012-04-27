@@ -59,6 +59,7 @@ public class GameTest {
 		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
 		
 		player.setMisiles(misiles);
+		player.setV(2);
 		game.getGameLogic().setPlayer(player);
 		
 		game.openWindow();
@@ -334,7 +335,7 @@ public class GameTest {
 	
 		for ( shotIndex = 0 ; shotIndex < 3  ; shotIndex++){
 			player.setX( game.getGameLogic().getActors().get(shotIndex).getX());
-			player.setY( game.getGameLogic().getActors().get(shotIndex).getY()+6);
+			//player.setY( game.getGameLogic().getActors().get(shotIndex).getY()+6);
 			eventQueue.postEvent( new KeyEvent( game.getWindow() , KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_SPACE, KeyEvent.CHAR_UNDEFINED )  );
 			eventQueue.postEvent( new KeyEvent( game.getWindow() , KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_SPACE, KeyEvent.CHAR_UNDEFINED )  );
 			try{
@@ -352,13 +353,27 @@ public class GameTest {
 		}
 		Assert.assertEquals("Numero de inavsores actual" , 5 , game.getGameLogic().getActorsNumber());
 	
+		
+		do{
+			game.update();
+			pantalla.paint( pantalla.getGraphics() );
+			try{
+				Thread.sleep(100);
+			}catch(Exception e){
+				
+			}
+		}while( (player.getMisiles().get(2).isVisible()) );
+		
+	
+		
+		
+		/*
 		game.update();
 		pantalla.paint( pantalla.getGraphics() );
 		game.update();
-		pantalla.paint( pantalla.getGraphics() );
-		game.update();
 		game.update();
 		pantalla.paint( pantalla.getGraphics() );
+		*/
 		
 		//Par aver si ha recargado bien los misiles
 		Assert.assertEquals("Numero de invasores actual" , 2 , game.getGameLogic().getActorsNumber());
@@ -380,19 +395,15 @@ public class GameTest {
 			}
 		}
 		
+		do{
+			game.update();
+			pantalla.paint( pantalla.getGraphics() );
+			try{
+				Thread.sleep(100);
+			}catch(Exception e){
 				
-		game.update();
-		pantalla.paint( pantalla.getGraphics() );
-		game.update();
-		pantalla.paint( pantalla.getGraphics() );
-		game.update();
-		pantalla.paint( pantalla.getGraphics() );
-		game.update();
-		pantalla.paint( pantalla.getGraphics() );
-		game.update();
-		game.update();
-		pantalla.paint( pantalla.getGraphics() );
-	
+			}
+		}while( (player.getMisiles().get(1).isVisible()) );
 		
 		Assert.assertEquals("Numero de inavsores eliminados" ,  0 , game.getGameLogic().getActorsNumber());
 		

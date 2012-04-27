@@ -39,6 +39,7 @@ public class PlayerTest {
 		game.addSprite("misil" ,"disparo1.gif");
 		
 		player = new Player( game.getSprite("jugador") ,  200 ,250  , game.getWidth()-50 , game.getHeight()-100 ); 
+		player.setV(2);
 		game.setPlayer(player);
 		
 	}

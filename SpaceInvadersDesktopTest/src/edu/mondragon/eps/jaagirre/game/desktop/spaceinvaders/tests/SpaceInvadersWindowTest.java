@@ -301,34 +301,30 @@ public class SpaceInvadersWindowTest {
 		
 		player.setX( game.getGameLogic().getActors().get(shotIndex).getX());
 		player.setY( game.getGameLogic().getActors().get(shotIndex).getY()+100);
-		eventQueue.postEvent( new KeyEvent( game.getWindow() , KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_SPACE, KeyEvent.CHAR_UNDEFINED )  );
-		eventQueue.postEvent( new KeyEvent( game.getWindow() , KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_SPACE, KeyEvent.CHAR_UNDEFINED )  );
+	
+		
 		try{
-			Thread.sleep(50);
+			Thread.sleep(300);
 		}catch(Exception e){
 			
 		}
+		
 		eventQueue.postEvent( new KeyEvent( game.getWindow() , KeyEvent.KEY_PRESSED, 0, 0, KeyEvent.VK_SPACE, KeyEvent.CHAR_UNDEFINED )  );
 		eventQueue.postEvent( new KeyEvent( game.getWindow() , KeyEvent.KEY_RELEASED, 0, 0, KeyEvent.VK_SPACE, KeyEvent.CHAR_UNDEFINED )  );
-		try{
-			Thread.sleep(100);
-		}catch(Exception e){
-			
-		}
+		
+		
+		
+		
 		do{
+			game.update();
+			pantalla.paint( pantalla.getGraphics() );
 			try{
 				Thread.sleep(100);
 			}catch(Exception e){
 				
 			}
-		}while( !(player.getMisiles().get(0).isVisible()) );
-		do{
-			try{
-				Thread.sleep(100);
-			}catch(Exception e){
-				
-			}
-		}while( player.getMisiles().get(0).isVisible() );
+		}while( (player.getMisiles().get(0).isVisible()) );
+		
 		
 		Assert.assertTrue("Invasores eliminados.", game.getGameLogic().isGameWin() );
 		try{
