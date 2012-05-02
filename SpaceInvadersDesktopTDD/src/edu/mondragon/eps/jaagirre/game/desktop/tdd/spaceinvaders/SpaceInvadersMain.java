@@ -8,6 +8,8 @@ import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Alien;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.AlienHV;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.PlayerWithCteSpeed;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Shot;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.awt.GameAWT;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.awt.GameBoardAWT;
 
 
 

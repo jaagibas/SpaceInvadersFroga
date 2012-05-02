@@ -1,10 +1,13 @@
-package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
+package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.awt;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.Game;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.GameBoard;
 
 
 

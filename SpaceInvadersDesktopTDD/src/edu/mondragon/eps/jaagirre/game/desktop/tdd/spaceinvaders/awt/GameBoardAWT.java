@@ -1,4 +1,4 @@
-package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
+package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.awt;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -10,6 +10,8 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.GameBoard;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.GameText;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 
 public class GameBoardAWT  extends  GameBoard{
