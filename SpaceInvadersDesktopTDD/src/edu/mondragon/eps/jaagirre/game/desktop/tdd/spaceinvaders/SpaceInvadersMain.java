@@ -47,7 +47,8 @@ public class SpaceInvadersMain {
 		aliens = new Actor[3];
 		int i = 0;
 		for ( i = 0 ; i < 3 ; i++){
-			aliens[i] = new Alien( game.getSprite("invasor") ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  ); 
+			aliens[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100 ,
+									game.getSprite("invasor").getWidth() , game.getSprite("invasor").getHeight() , true ); 
 			aliens[i].setVx(2);
 			aliens[i].setVy(0);
 			//game.addActor(aliens[i]);
@@ -62,14 +63,16 @@ public class SpaceInvadersMain {
         aliens2 = new Actor[6];
         for ( i = 0 ; i < 3 ; i++){
               
-               aliens2[i] = new Alien( game.getSprite("invasor") ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  );
+               aliens2[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100 , 
+            		   			game.getSprite("invasor").getWidth() , game.getSprite("invasor").getHeight() , true);
                aliens2[i].setVx(2);
                aliens2[i].setVy(0);
                //game.addActor(aliens[i]);
         }
         for ( i = 3 ; i < 6 ; i++){
               
-               aliens2[i] = new AlienHV( game.getSprite("invasorHV") ,  10*i ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  );
+               aliens2[i] = new AlienHV( "invasorHV" ,  10*i ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  ,
+            		   					game.getSprite("invasorHV").getWidth() , game.getSprite("invasorHV").getHeight() , true );
                aliens2[i].setVx(2);
                aliens2[i].setVy(0);
                //game.addActor(aliens2[i]);
@@ -83,12 +86,17 @@ public class SpaceInvadersMain {
 		
 		
 		//player = new Player( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
-        player = new PlayerWithCteSpeed( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
+        player = new PlayerWithCteSpeed( "jugador" , 200 , 300 , game.getWidth()-50 , game.getHeight()-100,
+        								game.getSprite("jugador").getWidth() , game.getSprite("jugador").getHeight() , true);
 		player.setV(2);
         ArrayList<Shot> misiles = new ArrayList<Shot>();
-		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
-		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
-		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100  , 
+							game.getSprite("misil").getWidth()  , 
+							game.getSprite("misil").getHeight() , false) );
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 , 
+							game.getSprite("misil").getWidth() , game.getSprite("misil").getHeight() , false ) );
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100  , 
+							game.getSprite("misil").getWidth() , game.getSprite("misil").getHeight() , false ) );
 		
 		player.setMisiles(misiles);
 		game.getGameLogic().setPlayer(player);

@@ -4,8 +4,11 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.imageio.ImageIO;
 
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 
@@ -21,6 +24,7 @@ public class GameBoard extends Canvas {
 		// TODO Auto-generated constructor stub
 		textBuffer = new ArrayList<GameText>();
 		imageBuffer = new ArrayList<Actor>();
+		this.sprites = new HashMap<String,BufferedImage>();
 	}
 	
 	public ArrayList<GameText> getTextBuffer() {
@@ -89,8 +93,35 @@ public class GameBoard extends Canvas {
 	
 	
 	public BufferedImage getSprite(String id){
-		return null;
+		 BufferedImage img = (BufferedImage)sprites.get(id);
+	     return img;
 	}
+	
+	 public boolean existsSprite(String nombre) {
+		 return false;
+	 }
+	
+	 public void createSprite( String path , String nombre  ){
+		 BufferedImage img = (BufferedImage)sprites.get(nombre);
+		 if (img == null) {
+	          img = loadImage("res/"+path);
+	          if (img != null){
+	        	  sprites.put(nombre ,img);
+	          }
+	        }
+	 }
+	 
+	 private BufferedImage loadImage(String nombre) {
+	        URL url=null;
+	        try {
+	          url = getClass().getClassLoader().getResource(nombre);
+	          return ImageIO.read(url);
+	        } catch (Exception e) {
+	          System.out.println("No se pudo cargar la imagen " + nombre +" de "+url);
+	          System.out.println("El error fue : "+e.getClass().getName()+" "+e.getMessage());
+	          return null;
+	        }
+	 }
 
 }
 

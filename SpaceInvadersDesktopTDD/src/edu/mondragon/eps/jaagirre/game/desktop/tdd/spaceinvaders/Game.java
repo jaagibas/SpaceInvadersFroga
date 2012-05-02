@@ -26,7 +26,7 @@ public class Game  {
 	
 	private JFrame window;
 	private JPanel panel;
-	private Canvas board;
+	private GameBoard board;
 	private GameLogic gameLogic;
 	private HashMap<String,BufferedImage> sprites;
 	
@@ -34,7 +34,7 @@ public class Game  {
 	
 	
 	
-	public Game(int height, int width, Canvas board){
+	public Game(int height, int width, GameBoard board){
 		this.height = height;
 		this.width = width;
 		this.gameLogic = new GameLogic();
@@ -63,7 +63,12 @@ public class Game  {
 	
 	public void addSprite(String key , String  nombre){
 		 BufferedImage img = (BufferedImage)sprites.get(nombre);
-	        if (img == null) {
+	     //hay que agregar la imagen en el sprite del board y el id
+		 if (! board.existsSprite(nombre) ){
+			 board.createSprite( nombre , key  );
+			 
+		 }
+		 if (img == null) {
 	          img = loadImage("res/"+nombre);
 	          if (img != null){
 	        	  sprites.put(key,img);
@@ -76,6 +81,7 @@ public class Game  {
 	}
 	
 	public BufferedImage getSprite(String  key){
+		 
 		 BufferedImage img = (BufferedImage)sprites.get(key);
 	     return img;
 	}

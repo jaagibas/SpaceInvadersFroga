@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Shot extends Actor {
 
-	public Shot(BufferedImage image, int x, int y, int xLimit, int yLimit) {
+	public Shot(String image, int x, int y, int xLimit, int yLimit) {
 		super(image, x, y, xLimit, yLimit);
 		// TODO Auto-generated constructor stub
 		this.setVx(0);
@@ -12,9 +12,21 @@ public class Shot extends Actor {
 		this.setVisible(false);
 	}
 
-	public Shot(BufferedImage image, int x, int y) {
+	public Shot(String image, int x, int y) {
 		super(image, x, y);
 		// TODO Auto-generated constructor stub
+		this.setVx(0);
+		this.setVy(-2);
+		this.setVisible(false);
+	}
+
+	public Shot(String image, int x, int y, int xLimit, int yLimit, int width,
+			int height, boolean visible) {
+		super(image, x, y, xLimit, yLimit, width, height, visible);
+		// TODO Auto-generated constructor stub
+		this.setVx(0);
+		this.setVy(-2);
+		this.setVisible(false);
 	}
 
 	@Override
