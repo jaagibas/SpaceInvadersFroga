@@ -4,7 +4,7 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.util.HashMap;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -28,7 +28,7 @@ public class Game  {
 	private JPanel panel;
 	private GameBoard board;
 	private GameLogic gameLogic;
-	private HashMap<String,BufferedImage> sprites;
+	
 	
 	boolean running;
 	
@@ -39,7 +39,7 @@ public class Game  {
 		this.width = width;
 		this.gameLogic = new GameLogic();
 		this.board = board;
-		this.sprites = new HashMap<String,BufferedImage>();
+		
 	
 	}
 	
@@ -47,44 +47,13 @@ public class Game  {
 		
 	} 
 	
-
-
-	private BufferedImage loadImage(String nombre) {
-	        URL url=null;
-	        try {
-	          url = getClass().getClassLoader().getResource(nombre);
-	          return ImageIO.read(url);
-	        } catch (Exception e) {
-	          System.out.println("No se pudo cargar la imagen " + nombre +" de "+url);
-	          System.out.println("El error fue : "+e.getClass().getName()+" "+e.getMessage());
-	          return null;
-	        }
-	 }
-	
 	public void addSprite(String key , String  nombre){
-		 BufferedImage img = (BufferedImage)sprites.get(nombre);
-	     //hay que agregar la imagen en el sprite del board y el id
 		 if (! board.existsSprite(nombre) ){
 			 board.createSprite( nombre , key  );
 			 
 		 }
-		 if (img == null) {
-	          img = loadImage("res/"+nombre);
-	          if (img != null){
-	        	  sprites.put(key,img);
-	          }
-	        }
-	 }
-	
-	public int getSpritesNumber(){
-		return sprites.size();
 	}
 	
-	public BufferedImage getSprite(String  key){
-		 
-		 BufferedImage img = (BufferedImage)sprites.get(key);
-	     return img;
-	}
 	public void addActor(Actor actor){
 		gameLogic.addActor(actor);
 	}
@@ -166,7 +135,7 @@ public class Game  {
 	
 
 
-	public Canvas getBoard() {
+	public GameBoard getBoard() {
 		return board;
 	}
 

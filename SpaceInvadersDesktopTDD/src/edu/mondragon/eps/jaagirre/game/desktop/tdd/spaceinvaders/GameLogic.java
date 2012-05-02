@@ -192,7 +192,7 @@ public class GameLogic {
 		//Establecemos la pantalla actual
         actors = levels.get( this.actualLevel).getLevel();
 		update();
-        board.paint( board.getGraphics());
+        board.paintBoard();
         try{
         	Thread.sleep(100);
         }catch(Exception e){}

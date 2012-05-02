@@ -79,7 +79,9 @@ public class GameBoard extends Canvas {
 		g.clearRect(0, 0, getWidth(),getHeight());
 	}
 	
-
+	public void paintBoard(){
+		paint( this.getGraphics());
+	}
 	
 	
 	@Override
