@@ -8,8 +8,8 @@ import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 
 public abstract class  GameBoard {
 	
-	ArrayList<GameText> textBuffer;
-	ArrayList<Actor> imageBuffer;
+	protected ArrayList<GameText> textBuffer;
+	protected ArrayList<Actor> imageBuffer;
 	
 	public ArrayList<GameText> getTextBuffer() {
 		return textBuffer;
