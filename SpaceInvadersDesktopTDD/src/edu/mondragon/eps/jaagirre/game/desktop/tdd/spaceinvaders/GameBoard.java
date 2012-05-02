@@ -1,7 +1,7 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 
 
-import java.awt.Canvas;
+
 import java.util.ArrayList;
 
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
