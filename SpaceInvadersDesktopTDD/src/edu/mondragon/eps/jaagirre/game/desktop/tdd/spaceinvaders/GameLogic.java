@@ -1,6 +1,7 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 
 
+
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -81,12 +82,12 @@ public class GameLogic {
 			this.gameWin= true;
 			//agregamos texto final
 			text = new String("Zorionak!!!!!");
-			board.textBuffer.add( new GameText(text, 200,200) );
+			board.getTextBuffer().add( new GameText(text, 200,200) );
 			ret = true;
 		}else if (player.getShields() == 0){
 			this.gameOver = true;
 			text = new String("Game Over.");
-			board.textBuffer.add( new GameText(text, 200,200) );
+			board.getTextBuffer().add( new GameText(text, 200,200) );
 			//agregamos texto final
 			ret = true;
 		}
@@ -205,7 +206,7 @@ public class GameLogic {
 	}
 
 	public void setActorsInBoard(){
-        board.imageBuffer.addAll(levels.get( this.actualLevel).getLevel());
+        board.getImageBuffer().addAll(levels.get( this.actualLevel).getLevel());
 	}
 
 
