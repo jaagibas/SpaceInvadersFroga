@@ -1,11 +1,14 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 
+
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Player;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Shot;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.utils.RectangleServices;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.utils.Square;
 
 public class GameLogic {
 	protected ArrayList<Actor>  actors;
@@ -107,10 +110,13 @@ public class GameLogic {
 			aurkitua = false;
 			while (!aurkitua &&  i < alienNumber){
 				alien = actors.get(i);
-				Rectangle rAlien = new Rectangle(alien.getX() , alien.getY() , alien.getWidth() , alien.getHeight());
-				Rectangle rMisil = new Rectangle( misil.getX() , misil.getY() , misil.getWidth() , misil.getHeight() );
+				RectangleServices rs = new RectangleServices();
+				Square sAlien = new Square( alien.getX() , alien.getY() , alien.getWidth() , alien.getHeight() );
+				Square sMisil = new Square( misil.getX() , misil.getY() , misil.getWidth() , misil.getHeight() );
+				
+				
 				if ( 
-					    rAlien.intersects( rMisil) 
+					    rs.intersects( sAlien , sMisil) 
 						&&
 						( misil.isVisible() )
 					){
