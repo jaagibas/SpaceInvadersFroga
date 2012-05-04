@@ -4,7 +4,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public class GameImage {
-	private BufferedImage image;
+	
+	String id;
 	private int x , y;
 	private int xLimit , yLimit;
 	private int width;
@@ -12,23 +13,23 @@ public class GameImage {
 	
 	private boolean visible;
 	
-	public GameImage(BufferedImage image, int  x ,int  y) {
+	public GameImage(String id ,  int  x ,int  y) {
 		super();
-		this.image = image;
+		this.id = id;
 		this.x = x;
 		this.y = y;
 		this.xLimit = 600;
 		this.yLimit = 400;
 		this.visible = true;
-		this.width = image.getWidth();
-		this.height = image.getHeight();
+		//this.width = image.getWidth();
+		//this.height = image.getHeight();
 	}
 	
 
-	public GameImage(BufferedImage image, int x, int y, int xLimit, int yLimit,
+	public GameImage(String image, int x, int y, int xLimit, int yLimit,
 			int width, int height, boolean visible) {
 		super();
-		this.image = image;
+		this.id = image;
 		this.x = x;
 		this.y = y;
 		this.xLimit = xLimit;
@@ -39,16 +40,16 @@ public class GameImage {
 	}
 
 
-	public GameImage(BufferedImage image, int x, int y, int xLimit, int yLimit) {
+	public GameImage(String image, int x, int y, int xLimit, int yLimit) {
 		super();
-		this.image = image;
+		this.id = image;
 		this.x = x;
 		this.y = y;
 		this.xLimit = xLimit;
 		this.yLimit = yLimit;
 		this.visible = true;
-		this.width = image.getWidth();
-		this.height = image.getHeight();
+		//this.width = image.getWidth();
+		//this.height = image.getHeight();
 	}
 
 
@@ -116,13 +117,7 @@ public class GameImage {
 			
 	}
 
-	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(BufferedImage image) {
-		this.image = image;
-	}
+	
 
 	public int getxLimit() {
 		return xLimit;
@@ -139,6 +134,16 @@ public class GameImage {
 	public void setyLimit(int yLimit) {
 		this.yLimit = yLimit;
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	
 	
 	

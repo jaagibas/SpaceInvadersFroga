@@ -1,12 +1,15 @@
-package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
+package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.awt;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.GameBoard;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.GameEventListener;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.GameThread;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.Level;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Alien;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.AlienHV;
-import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Player;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.PlayerWithCteSpeed;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Shot;
 
@@ -20,7 +23,7 @@ public class SpaceInvadersMain {
 	 * @param args
 	 */
 	public static void main(String[] args){
-		Game game = null;
+		GameAWT game = null;
 		GameBoard pantalla = null;
 		GameThread gameThread= null;
 		GameEventListener listener;
@@ -29,8 +32,8 @@ public class SpaceInvadersMain {
 		//Player player = null;
 		PlayerWithCteSpeed player = null;
 		
-		pantalla = new GameBoard();
-		game = new Game( 400, 400, pantalla);
+		pantalla = new GameBoardAWT();
+		game = new GameAWT( 400, 400, pantalla);
 		gameThread= new GameThread(game);
 		listener = new GameEventListener(game);
 		
@@ -47,7 +50,8 @@ public class SpaceInvadersMain {
 		aliens = new Actor[3];
 		int i = 0;
 		for ( i = 0 ; i < 3 ; i++){
-			aliens[i] = new Alien( game.getSprite("invasor") ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  ); 
+			aliens[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100 ,
+									game.getBoard().getSpriteWidth("invasor") , game.getBoard().getSpriteHeight("invasor") , true ); 
 			aliens[i].setVx(2);
 			aliens[i].setVy(0);
 			//game.addActor(aliens[i]);
@@ -62,14 +66,16 @@ public class SpaceInvadersMain {
         aliens2 = new Actor[6];
         for ( i = 0 ; i < 3 ; i++){
               
-               aliens2[i] = new Alien( game.getSprite("invasor") ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  );
+               aliens2[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100 , 
+            		   			game.getBoard().getSpriteWidth("invasor") , game.getBoard().getSpriteHeight("invasor") , true);
                aliens2[i].setVx(2);
                aliens2[i].setVy(0);
                //game.addActor(aliens[i]);
         }
         for ( i = 3 ; i < 6 ; i++){
               
-               aliens2[i] = new AlienHV( game.getSprite("invasorHV") ,  10*i ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  );
+               aliens2[i] = new AlienHV( "invasorHV" ,  10*i ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  ,
+            		   					game.getBoard().getSpriteWidth("invasorHV") , game.getBoard().getSpriteHeight("invasorHV") , true );
                aliens2[i].setVx(2);
                aliens2[i].setVy(0);
                //game.addActor(aliens2[i]);
@@ -83,12 +89,18 @@ public class SpaceInvadersMain {
 		
 		
 		//player = new Player( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
-        player = new PlayerWithCteSpeed( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
+        player = new PlayerWithCteSpeed( "jugador" , 200 , 300 , game.getWidth()-50 , game.getHeight()-100,
+        								game.getBoard().getSpriteWidth("jugador") ,
+        								game.getBoard().getSpriteHeight("jugador") , true);
 		player.setV(2);
         ArrayList<Shot> misiles = new ArrayList<Shot>();
-		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
-		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
-		misiles.add(new Shot( game.getSprite("misil") ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 ) );
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100  , 
+							game.getBoard().getSpriteWidth("misil")  , 
+							game.getBoard().getSpriteHeight("misil") , false) );
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 , 
+							game.getBoard().getSpriteWidth("misil"), game.getBoard().getSpriteHeight("misil") , false ) );
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100  , 
+							game.getBoard().getSpriteWidth("misil") , game.getBoard().getSpriteHeight("misil") , false ) );
 		
 		player.setMisiles(misiles);
 		game.getGameLogic().setPlayer(player);

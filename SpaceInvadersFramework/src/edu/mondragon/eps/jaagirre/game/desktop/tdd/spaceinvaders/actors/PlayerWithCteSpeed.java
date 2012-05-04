@@ -6,14 +6,27 @@ import java.awt.image.BufferedImage;
 public class PlayerWithCteSpeed extends Player {
 	int dir;
     
-    public PlayerWithCteSpeed(BufferedImage image, int x, int y, int xLimit,
+    public PlayerWithCteSpeed(String image, int x, int y, int xLimit,
                  int yLimit) {
           super(image, x, y, xLimit, yLimit);
           // TODO Auto-generated constructor stub
     }
    
    
-    @Override
+    public PlayerWithCteSpeed(String image, int x, int y, int xLimit,
+			int yLimit, int width, int height, boolean visible) {
+		super(image, x, y, xLimit, yLimit, width, height, visible);
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public PlayerWithCteSpeed(String image, int x, int y) {
+		super(image, x, y);
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
     public void executeBehaviour() {
           super.executeBehaviour();
           //TODO

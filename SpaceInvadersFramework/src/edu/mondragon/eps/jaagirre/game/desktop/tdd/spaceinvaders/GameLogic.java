@@ -1,11 +1,15 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 
+
+
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Player;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Shot;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.utils.RectangleServices;
+import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.utils.Square;
 
 public class GameLogic {
 	protected ArrayList<Actor>  actors;
@@ -78,12 +82,12 @@ public class GameLogic {
 			this.gameWin= true;
 			//agregamos texto final
 			text = new String("Zorionak!!!!!");
-			board.textBuffer.add( new GameText(text, 200,200) );
+			board.getTextBuffer().add( new GameText(text, 200,200) );
 			ret = true;
 		}else if (player.getShields() == 0){
 			this.gameOver = true;
 			text = new String("Game Over.");
-			board.textBuffer.add( new GameText(text, 200,200) );
+			board.getTextBuffer().add( new GameText(text, 200,200) );
 			//agregamos texto final
 			ret = true;
 		}
@@ -107,10 +111,13 @@ public class GameLogic {
 			aurkitua = false;
 			while (!aurkitua &&  i < alienNumber){
 				alien = actors.get(i);
-				Rectangle rAlien = new Rectangle(alien.getX() , alien.getY() , alien.getWidth() , alien.getHeight());
-				Rectangle rMisil = new Rectangle( misil.getX() , misil.getY() , misil.getWidth() , misil.getHeight() );
+				RectangleServices rs = new RectangleServices();
+				Square sAlien = new Square( alien.getX() , alien.getY() , alien.getWidth() , alien.getHeight() );
+				Square sMisil = new Square( misil.getX() , misil.getY() , misil.getWidth() , misil.getHeight() );
+				
+				
 				if ( 
-					    rAlien.intersects( rMisil) 
+					    rs.intersects( sAlien , sMisil) 
 						&&
 						( misil.isVisible() )
 					){
@@ -192,14 +199,14 @@ public class GameLogic {
 		//Establecemos la pantalla actual
         actors = levels.get( this.actualLevel).getLevel();
 		update();
-        board.paint( board.getGraphics());
+        board.paintBoard();
         try{
         	Thread.sleep(100);
         }catch(Exception e){}
 	}
 
 	public void setActorsInBoard(){
-        board.imageBuffer.addAll(levels.get( this.actualLevel).getLevel());
+        board.getImageBuffer().addAll(levels.get( this.actualLevel).getLevel());
 	}
 
 

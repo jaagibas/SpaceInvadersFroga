@@ -10,6 +10,27 @@ public class Player extends Actor{
 	int shields;
 	int v;
 	
+	public Player(String image, int x, int y, int xLimit, int yLimit) {
+		super(image, x, y, xLimit, yLimit);
+		// TODO Auto-generated constructor stub
+		misiles = new ArrayList<Shot>();
+		misilNumber = 0;
+		shields=3;
+	}
+
+	
+	
+	public Player(String image, int x, int y, int xLimit, int yLimit,
+			int width, int height, boolean visible) {
+		super(image, x, y, xLimit, yLimit, width, height, visible);
+		// TODO Auto-generated constructor stub
+		misiles = new ArrayList<Shot>();
+		misilNumber = 0;
+		shields=3;
+	}
+
+
+	
 	public int getV() {
 		return v;
 	}
@@ -20,18 +41,6 @@ public class Player extends Actor{
 		this.v = v;
 	}
 
-
-
-	public Player(BufferedImage image, int x, int y, int xLimit, int yLimit) {
-		super(image, x, y, xLimit, yLimit);
-		// TODO Auto-generated constructor stub
-		misiles = new ArrayList<Shot>();
-		misilNumber = 0;
-		shields=3;
-	}
-
-	
-	
 	public ArrayList<Shot> getMisiles() {
 		return misiles;
 	}
@@ -44,7 +53,7 @@ public class Player extends Actor{
 
 
 
-	public Player(BufferedImage image, int x, int y) {
+	public Player(String image, int x, int y) {
 		super(image, x, y);
 		// TODO Auto-generated constructor stub
 	}

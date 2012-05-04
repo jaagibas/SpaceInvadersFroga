@@ -5,13 +5,19 @@ import java.awt.image.BufferedImage;
 public class Alien extends Adversary {
 
 	
-	public Alien(BufferedImage image, int x, int y, int xLimit, int yLimit) {
+	public Alien(String image, int x, int y, int xLimit, int yLimit) {
 		super(image, x, y, xLimit, yLimit);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Alien(BufferedImage image, int x, int y) {
+	public Alien(String image, int x, int y) {
 		super(image, x, y);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Alien(String image, int x, int y, int xLimit, int yLimit, int width,
+			int height, boolean visible) {
+		super(image, x, y, xLimit, yLimit, width, height, visible);
 		// TODO Auto-generated constructor stub
 	}
 
