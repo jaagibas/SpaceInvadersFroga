@@ -2,11 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:gravity="center|center_horizontal|fill|fill_horizontal"
     android:orientation="vertical" >
-
-    <TextView
-        android:layout_width="fill_parent"
+        
+     <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:layout_weight="0.85" >
+
+         <SurfaceView
+             android:id="@+id/surfaceView1"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" />
+     
+    </FrameLayout>
+
+     <LinearLayout
+         android:id="@+id/linearLayout1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:baselineAligned="false"
+         android:orientation="horizontal" >
+
+         <Button
+             android:id="@+id/buttonLeft"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Button" />
+
+         <Button
+             android:id="@+id/buttonUp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Button" />
+
+         <Button
+             android:id="@+id/buttonDown"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Button" />
+
+         <Button
+             android:id="@+id/buttonRight"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Button" />
+     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonFire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>
