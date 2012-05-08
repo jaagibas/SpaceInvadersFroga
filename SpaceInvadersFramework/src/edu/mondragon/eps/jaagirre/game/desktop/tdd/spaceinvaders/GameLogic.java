@@ -78,13 +78,15 @@ public class GameLogic {
 		
 		boolean ret = false;
 		String text = null;
+		int level = 0;
+		level = this.actualLevel+1;
 		if ( actors.size() == 0){
 			this.gameWin= true;
-			//agregamos texto final
-			text = new String("Zorionak!!!!!");
-			board.getTextBuffer().add( new GameText(text, 200,200) );
+			text = new String( level +  " maila!!!!!");
+			board.addLevelText( new GameText(text, 200,200) );
 			ret = true;
 		}else if (player.getShields() == 0){
+			board.removeLevelText();
 			this.gameOver = true;
 			text = new String("Game Over.");
 			board.getTextBuffer().add( new GameText(text, 200,200) );

@@ -27,6 +27,24 @@ public abstract class  GameBoard {
 		textBuffer.add( str );
 	}
 	
+	public void addLevelText(GameText str){
+		removeLevelText();
+		textBuffer.add( str );
+	}
+	
+	
+	public void removeLevelText(){
+		int i;
+		GameText text = null;
+		for (i = 0 ; i < textBuffer.size() ; i++){
+			
+			if ( textBuffer.get(i).getText().contains("maila") ){
+				text = textBuffer.get(i);
+			}
+		}
+		textBuffer.remove(text);
+	}
+	
 	public void addActor(Actor image){
 		imageBuffer.add( image );
 	}
