@@ -2,7 +2,7 @@ package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 
 
 
-import java.awt.Rectangle;
+
 import java.util.ArrayList;
 
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors.Actor;
@@ -136,10 +136,12 @@ public class GameLogic {
 		size = this.getActorsNumber();
 		while( i < size && !aurkitua ){
 			alien = actors.get(i);
-			Rectangle rAlien = new Rectangle(alien.getX() , alien.getY() , alien.getWidth() , alien.getHeight());
-			Rectangle rPlayer = new Rectangle( player.getX() , player.getY() , player.getWidth() , player.getHeight() );
+			RectangleServices rs = new RectangleServices();
+			Square sAlien = new Square( alien.getX() , alien.getY() , alien.getWidth() , alien.getHeight() );
+			Square sPlayer = new Square( player.getX() , player.getY() , player.getWidth() , player.getHeight() );
+			
 			if ( 
-					rAlien.intersects(rPlayer)
+					rs.intersects(sAlien, sPlayer)
 				){
 				aurkitua = true;
 			}
