@@ -3,5 +3,10 @@
 
     <string name="hello">Hello World, SpaceInvadersMobileAndroidActivity!</string>
     <string name="app_name">SpaceInvadersMobileAndroid</string>
+    <string name="up">up</string>
+    <string name="down">down</string>
+    <string name="left">&lt;&lt;</string>
+    <string name="right">&gt;&gt;</string>
+    <string name="fire">fire</string>
 
 </resources>

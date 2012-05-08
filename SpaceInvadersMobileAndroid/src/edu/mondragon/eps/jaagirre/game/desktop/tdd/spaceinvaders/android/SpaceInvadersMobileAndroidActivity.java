@@ -98,6 +98,8 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
 		bDown.setOnClickListener(listener); 
 		bFire.setOnClickListener(listener);
 		
+	
+		
 		
 		
 	
