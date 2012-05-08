@@ -6,6 +6,7 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.SurfaceView;
+import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.Game;
@@ -24,7 +25,9 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
 	/*GUI*/
 	Button bRight , bLeft , bUp, bDown , bFire;
 	FrameLayout fLayout= null;
+	SurfaceView surfaceView;
 	GameBoard board; 
+	GameEventListenerAndroid listener;
 	/*Logica de negocio*/  
 	Actor []aliens;
 	Actor []aliens2;
@@ -38,15 +41,29 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         initView();
-        board = new GameBoardAndroid();
-    	( (GameBoardAndroid)board ).canvas = (SurfaceView) this.findViewById(R.id.surfaceView1);
-    	initGameElements();
-    	game.openWindow();
-		gameThread.start();
+        board = new GameBoardAndroid( (SurfaceView)this.findViewById(R.id.surfaceView1) );
+    
+    	
     
     }
     
-    public void initView(){
+ 
+    
+    @Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		// TODO Auto-generated method stub
+		super.onWindowFocusChanged(hasFocus);
+		initGameElements();
+	  	game.openWindow();
+		gameThread.start();
+	}
+
+
+
+
+
+	public void initView(){
+    
     	bLeft = (Button) this.findViewById(R.id.buttonLeft);
 		bRight = (Button) this.findViewById(R.id.buttonRight); 
 		bUp = (Button) this.findViewById(R.id.buttonUp); 
@@ -57,12 +74,35 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
     
     public void initGameElements(){
     	int i = 0;
-    	board = new GameBoardAndroid();
-		game = new GameAndroid(400, 400, board);
+    	int h , w;
+    	h =this.findViewById(R.id.surfaceView1).getWidth();
+    	w=this.findViewById(R.id.surfaceView1).getHeight();
+    	
+    	game = new GameAndroid( h,w , board);
+    	System.out.println("w & h : " + h +" - " +w + "::" +fLayout.getWidth() + "#"+ fLayout.getHeight());
+    	
+    	gameThread= new GameThread(game);
 		aliens = new Actor[3];
+		
+		game.initWindow();
+		game.addSprite("invasor" , ""+R.drawable.bicho);
+		game.addSprite("jugador" , ""+R.drawable.nave);
+		game.addSprite("misil" , ""+R.drawable.disparo1);
+		game.addSprite("invasorHV" , ""+ R.drawable.the_new_blue_space_ship);
+		
+		game.getGameLogic().setBoard(board);
+		listener = new GameEventListenerAndroid(game);
+		bRight.setOnClickListener(listener);
+		bLeft.setOnClickListener(listener);
+		bUp.setOnClickListener(listener);
+		bDown.setOnClickListener(listener); 
+		bFire.setOnClickListener(listener);
+		
+		
+		
 	
 		for ( i = 0 ; i < 3 ; i++){
-			aliens[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100 ,
+			aliens[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth() , game.getHeight() ,
 									game.getBoard().getSpriteWidth("invasor") , game.getBoard().getSpriteHeight("invasor") , true ); 
 			aliens[i].setVx(2);
 			aliens[i].setVy(0);
@@ -76,7 +116,7 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
         aliens2 = new Actor[6];
         for ( i = 0 ; i < 3 ; i++){
               
-               aliens2[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100 , 
+               aliens2[i] = new Alien( "invasor" ,  10 ,(i* 20)+10  ,  game.getWidth() , game.getHeight() , 
             		   			game.getBoard().getSpriteWidth("invasor") , game.getBoard().getSpriteHeight("invasor") , true);
                aliens2[i].setVx(2);
                aliens2[i].setVy(0);
@@ -84,7 +124,7 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
         }
         for ( i = 3 ; i < 6 ; i++){
               
-               aliens2[i] = new AlienHV( "invasorHV" ,  10*i ,(i* 20)+10  ,  game.getWidth()-50 , game.getHeight()-100  ,
+               aliens2[i] = new AlienHV( "invasorHV" ,  10*i ,(i* 20)+10  ,  game.getWidth() , game.getHeight()  ,
             		   					game.getBoard().getSpriteWidth("invasorHV") , game.getBoard().getSpriteHeight("invasorHV") , true );
                aliens2[i].setVx(2);
                aliens2[i].setVy(0);
@@ -99,17 +139,17 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
 		
 		
 		//player = new Player( game.getSprite("jugador") , 200 , 300 , game.getWidth()-50 , game.getHeight()-100 );
-        player = new PlayerWithCteSpeed( "jugador" , 200 , 300 , game.getWidth()-50 , game.getHeight()-100,
+        player = new PlayerWithCteSpeed( "jugador" , 200 , 300 , game.getWidth(), game.getHeight(),
         								game.getBoard().getSpriteWidth("jugador") ,
         								game.getBoard().getSpriteHeight("jugador") , true);
 		player.setV(2);
         ArrayList<Shot> misiles = new ArrayList<Shot>();
-		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100  , 
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth() , game.getHeight()  , 
 							game.getBoard().getSpriteWidth("misil")  , 
 							game.getBoard().getSpriteHeight("misil") , false) );
-		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100 , 
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth() , game.getHeight() , 
 							game.getBoard().getSpriteWidth("misil"), game.getBoard().getSpriteHeight("misil") , false ) );
-		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth()-50 , game.getHeight()-100  , 
+		misiles.add(new Shot( "misil" ,  0 , 0  , game.getWidth() , game.getHeight()  , 
 							game.getBoard().getSpriteWidth("misil") , game.getBoard().getSpriteHeight("misil") , false ) );
 		
 		player.setMisiles(misiles);
@@ -130,5 +170,7 @@ public class SpaceInvadersMobileAndroidActivity extends Activity {
              }
       }
 	}
+
+	
 	
 }
