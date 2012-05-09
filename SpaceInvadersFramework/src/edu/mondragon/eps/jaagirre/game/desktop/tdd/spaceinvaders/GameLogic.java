@@ -73,7 +73,7 @@ public class GameLogic {
 		
 		
 	}
-	
+	/*Adapatdo al API nuevo para textos*/
 	public boolean checkGame(){
 		
 		boolean ret = false;

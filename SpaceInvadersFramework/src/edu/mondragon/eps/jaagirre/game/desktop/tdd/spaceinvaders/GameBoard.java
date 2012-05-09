@@ -26,7 +26,7 @@ public abstract class  GameBoard {
 	public void addText(GameText str){
 		textBuffer.add( str );
 	}
-	
+	/*Nuevo API par atextos*/
 	public void addLevelText(GameText str){
 		removeLevelText();
 		textBuffer.add( str );
