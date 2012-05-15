@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/*Hay que crear y agregar clase RectangleAndroid*/
 public class RectangleServices {
 
 	RectangleInterface ri;
