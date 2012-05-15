@@ -217,7 +217,7 @@ public class GameLogic {
 
 
 	public void nextLevel(){
-        if (this.actualLevel  < levels.size() ){
+        if (this.actualLevel  < levels.size()-1 ){
                this.actualLevel++;
         }
     }
