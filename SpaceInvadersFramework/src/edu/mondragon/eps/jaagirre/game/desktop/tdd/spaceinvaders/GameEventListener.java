@@ -5,8 +5,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JPanel;
-
 public class GameEventListener extends WindowAdapter implements KeyListener {
 
 	Game game;
