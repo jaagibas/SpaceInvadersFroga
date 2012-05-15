@@ -15,7 +15,7 @@ public class GameLogic {
 	protected ArrayList<Actor>  actors;
 	private Player player;
 	private GameBoard board;
-	private boolean gameWin;
+	private boolean levelWin;
 	private boolean gameOver;
 	
 	private ArrayList<Level> levels;
@@ -27,7 +27,7 @@ public class GameLogic {
 	public GameLogic() {
 		super();
 		this.actors = new ArrayList<Actor>();
-		this.gameWin = false;
+		this.levelWin = false;
 		this.gameOver = false;
 		this.actualLevel = 0;
 		this.levels = new ArrayList<Level>();
@@ -81,7 +81,7 @@ public class GameLogic {
 		int level = 0;
 		level = this.actualLevel+1;
 		if ( actors.size() == 0){
-			this.gameWin= true;
+			this.levelWin= true;
 			text = new String( level +  " maila!!!!!");
 			board.addLevelText( new GameText(text, 200,200) );
 			ret = true;
@@ -175,12 +175,12 @@ public class GameLogic {
 		return actors.size();
 	}
 
-	public boolean isGameWin() {
-		return gameWin;
+	public boolean isLevelWin() {
+		return levelWin;
 	}
 
 	public void setGameWin(boolean gameWin) {
-		this.gameWin = gameWin;
+		this.levelWin = gameWin;
 	}
 
 	public boolean isGameOver() {
@@ -212,19 +212,22 @@ public class GameLogic {
 	/*Con dos niveles cuando ganamos el juego inetnta establecer el siguiente nivel y no existe y 
 	 * salta una excepcion.Bug de seguridad*/
 	public void setActorsInBoard(){
-        board.getImageBuffer().addAll(levels.get( this.actualLevel).getLevel());
+        if ( this.actualLevel  <  levels.size() ){
+        	board.getImageBuffer().addAll(levels.get( this.actualLevel).getLevel());
+        }
+		
 	}
 
-
+	/*Con este cambio ahora n odetecta correctamnete el fin de juego, sigue jugando*/
 	public void nextLevel(){
-        if (this.actualLevel  < levels.size()-1 ){
+        if (this.actualLevel  < levels.size() ){
                this.actualLevel++;
         }
     }
        
     public boolean isGameWon(){
         boolean ret = false;
-        if ( this.actualLevel  == levels.size()){
+        if ( ( this.actualLevel  == levels.size() ) ){
                ret = true;
         }
         return ret;

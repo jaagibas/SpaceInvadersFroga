@@ -71,12 +71,15 @@ public abstract class Game  {
 	/*Funcion que realiza la actualización de actores, verifica el juego y pinta la pantalla*/
     public void step(){
           gameLogic.executeActualLevel();
-          if ( gameLogic.isGameWin() ){        //isGameWin significa ganar nivel. Nota cambiar nobre futura release
+          if ( gameLogic.isLevelWin() ){        //isGameWin significa ganar nivel. Nota cambiar nobre futura release
               //significa que ha pasado la pantalla
               gameLogic.nextLevel();
               //establecemos los nuevos actores de la nueva pantalla
               gameLogic.setActorsInBoard();
-              gameLogic.setGameWin(false);
+              if (!gameLogic.isGameWon()){
+            	  gameLogic.setGameWin(false);
+              }
+              
           }
     }
 	

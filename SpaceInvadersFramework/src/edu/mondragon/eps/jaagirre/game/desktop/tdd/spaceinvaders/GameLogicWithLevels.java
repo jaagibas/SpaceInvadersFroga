@@ -22,7 +22,7 @@ public class GameLogicWithLevels extends GameLogic {
 	public void update() {
 		// TODO Auto-generated method stub
 		super.update();
-		if ( this.isGameWin() ){
+		if ( this.isLevelWin() ){
 			this.level++;
 			this.setLevel(level);
 			//colocar el player en su poisicion de inicio
