@@ -1,5 +1,10 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders;
 
+/*Comienzo de arreglo para Hotfix de join de hilos.
+ * Modificaciones a realizar:
+ * Cuando finaliza
+ * */
+
 public class GameThread  extends Thread{
 	private boolean running;
 	Game game;

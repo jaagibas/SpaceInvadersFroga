@@ -208,7 +208,9 @@ public class GameLogic {
         	Thread.sleep(100);
         }catch(Exception e){}
 	}
-
+	
+	/*Con dos niveles cuando ganamos el juego inetnta establecer el siguiente nivel y no existe y 
+	 * salta una excepcion.Bug de seguridad*/
 	public void setActorsInBoard(){
         board.getImageBuffer().addAll(levels.get( this.actualLevel).getLevel());
 	}
