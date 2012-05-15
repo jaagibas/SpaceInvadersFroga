@@ -1,7 +1,5 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors;
 
-import java.awt.image.BufferedImage;
-
 import edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.GameImage;
 
 abstract public class Actor extends GameImage {

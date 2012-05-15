@@ -1,6 +1,5 @@
 package edu.mondragon.eps.jaagirre.game.desktop.tdd.spaceinvaders.actors;
 
-import java.awt.image.BufferedImage;
 
 abstract  public class Adversary extends Actor {
 
